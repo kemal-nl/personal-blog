@@ -14,9 +14,9 @@ I am interested in learning Machine Learning. I have decided to follow the cours
 
 # Reading
 
-Besides being about my Machine Learning learning journey, this blog will also contain posts on the books I read. In the past I used to read quite a bit for leisure. However in recent years I unfortunately stopped doing this. I would like to pick it up again by [reading at least 5 books per month](https://www.youtube.com/watch?v=gRBkIdc_VYU). Each month I will read a mixture of books:
+Besides my Machine Learning learning journey, this blog will also be about my reading. In the past I used to read quite a bit for leisure. In recent years, however, I stopped with this. I would like to pick it up again by [reading at least 5 books per month](https://www.youtube.com/watch?v=gRBkIdc_VYU). Each month I will read (or listen to) 5 books:
 
-- Educational as well as for leisure
-- Different languages (English, Dutch, Turkish)
+- Both for educational purposes as well as for leisure
+- In the languages I know (English, Dutch, Turkish)
 
-After having read a book I will write a blog post about it and reflect on what I read.
+After having read a book I will write a blog post about it and reflect on what I read. My blog posts will all be in English.
