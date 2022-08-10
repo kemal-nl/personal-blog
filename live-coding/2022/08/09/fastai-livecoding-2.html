@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      1 min read
     
 </span></p>
 
@@ -101,12 +101,11 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h1"><a href="#At-the-end-of-this-lesson-you-will-have:">At the end of this lesson you will have: </a></li>
 <li class="toc-entry toc-h1"><a href="#Notes">Notes </a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#Prerequisites">Prerequisites </a></li>
-<li class="toc-entry toc-h2"><a href="#Install-conda/mambaforge-manually">Install conda/mambaforge manually </a></li>
-<li class="toc-entry toc-h2"><a href="#Install-conda/mambaforge-with-bash-script-from-fastai/fastsetup">Install conda/mambaforge with bash script from fastai/fastsetup </a></li>
-<li class="toc-entry toc-h2"><a href="#Install-other-packages-with-mamba">Install other packages with mamba </a></li>
-<li class="toc-entry toc-h2"><a href="#Useful-tips/commands-in-Linux">Useful tips/commands in Linux </a></li>
-<li class="toc-entry toc-h2"><a href="#Useful-tip-for-ipython">Useful tip for ipython </a></li>
+<li class="toc-entry toc-h2"><a href="#Git-and-Github">Git and Github </a></li>
+<li class="toc-entry toc-h2"><a href="#SSH">SSH </a></li>
+<li class="toc-entry toc-h2"><a href="#tmux">tmux </a></li>
+<li class="toc-entry toc-h2"><a href="#Jupyter">Jupyter </a></li>
+<li class="toc-entry toc-h2"><a href="#Install-fast.ai">Install fast.ai </a></li>
 </ul>
 </li>
 </ul><!--
@@ -154,7 +153,11 @@ window.onload = wrap_img;
 <a class="anchor" href="#At-the-end-of-this-lesson-you-will-have:" aria-hidden="true"><span class="octicon octicon-link"></span></a>At the end of this lesson you will have:<a class="anchor-link" href="#At-the-end-of-this-lesson-you-will-have:"> </a>
 </h1>
 <ul>
-<li>To be updated</li>
+<li>learned how to use git and github at a basic level (cloning, forking, committing, pushing, gitignor)</li>
+<li>learned how to use SSH to use a computer remotely</li>
+<li>learned how to use tmux for improved productivity by using multiple terminals</li>
+<li>learned how to use Jupyter Notebooks</li>
+<li>installed fastai</li>
 </ul>
 
 </div>
@@ -166,94 +169,33 @@ window.onload = wrap_img;
 <h1 id="Notes">
 <a class="anchor" href="#Notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes<a class="anchor-link" href="#Notes"> </a>
 </h1>
-<h2 id="Prerequisites">
-<a class="anchor" href="#Prerequisites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prerequisites<a class="anchor-link" href="#Prerequisites"> </a>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Git-and-Github">
+<a class="anchor" href="#Git-and-Github" aria-hidden="true"><span class="octicon octicon-link"></span></a>Git and Github<a class="anchor-link" href="#Git-and-Github"> </a>
 </h2>
 <ul>
-<li>Install Windows Subsystem for Linux (WSL) by typing into Powershell (run as admin): <code>wsl --install</code><ul>
-<li>For more details refer to <a href="https://docs.microsoft.com/en-us/windows/wsl/install">guide by Microsoft</a>
-</li>
+<li>Git is a version control system with which you can create a repository. Easy to switch to older versions (i.e. 'backups')</li>
+<li>Github is a website that hosts git repositories</li>
+<li>Cloning repositories: <code>git clone [git url]</code><ul>
+<li>You can do it with HTTP, but cannot commit without logging into repository</li>
+<li>Alternatively you can use SSH</li>
 </ul>
 </li>
-<li>Check whether Python and Jupyter are installed: <code>python</code> and <code>jupyter</code><ul>
-<li>Output (e.g. for Python) should be: <code>Command 'python' not found</code> </li>
-<li>There probably is a system version of Python. You do not want to be using this since it may interfere with the OS behavior.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Install-conda/mambaforge-manually">
-<a class="anchor" href="#Install-conda/mambaforge-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install conda/mambaforge manually<a class="anchor-link" href="#Install-conda/mambaforge-manually"> </a>
-</h2>
-<ol>
-<li>Make downloads directory inside home directory: <code>mkdir downloads</code>
-</li>
-<li>Download mambaforge: <code>wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh</code>
-</li>
-<li>Install mambaforge using bash: <code>bash Mambaforge-Linux-x86_64.sh</code><ul>
-<li>To ensure python environment is set up when starting terminal: <code>Do you wish the installer to initialize Mambaforge by running conda init? [yes|no]</code> → <code>yes</code>
-</li>
-</ul>
-</li>
-<li>After installing and restarting shell, terminal should mention <code>(base)</code> and <code>which python</code> should show a python directory in the mambaforge directory</li>
-</ol>
-<h2 id="Install-conda/mambaforge-with-bash-script-from-fastai/fastsetup">
-<a class="anchor" href="#Install-conda/mambaforge-with-bash-script-from-fastai/fastsetup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install conda/mambaforge with bash script from fastai/fastsetup<a class="anchor-link" href="#Install-conda/mambaforge-with-bash-script-from-fastai/fastsetup"> </a>
-</h2>
-<ol>
-<li>If you followed steps to manually install conda/mambaforge:<ul>
-<li>Remove mambaforge from home directory: <code>rm -rf mambaforge</code> </li>
-<li>Remove mambaforge installer from downloads directory: <code>rm -rf</code>
-</li>
-<li>Restart shell</li>
-</ul>
-</li>
-<li>Go to <a href="https://github.com/fastai/fastsetup">fastsetup github repo</a> and click on setup-conda.sh. Subsequently click on raw and copy url. Download it: <code>wget https://raw.githubusercontent.com/fastai/fastsetup/master/setup-conda.sh</code>
-</li>
-<li>Run it: <code>bash setup-conda.sh</code> or <code>./setup-conda.sh</code><ul>
-<li>If you get <code>Permission Denied</code> then:<ul>
-<li>Inspect permissions: <code>ls -l</code> (output needs to contain 'x' which stands for permission to execute)</li>
-<li>Change permission: <code>chmod u+x setup-conda.sh</code>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="Install-other-packages-with-mamba">
-<a class="anchor" href="#Install-other-packages-with-mamba" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install other packages with mamba<a class="anchor-link" href="#Install-other-packages-with-mamba"> </a>
-</h2>
-<ul>
-<li>Python libraries can be installed with: conda, pip, mamba<ul>
-<li>conda vs mamba: 2 ways of doing same thing, compatible with each other, mamba is faster</li>
-<li>prefer to use mamba, but usually documentation refers to conda (more established, around longer)</li>
-<li>advantage of conda/mamba over pip is that the dependencies are also installed correctly. If you use pip to install pytorch for instance, you need to install other stuff as well, whereas conda/mamba take care of installing everything you need correctly.</li>
-</ul>
-</li>
-<li>Never install stuff through <code>apt</code>, that is system stuff</li>
-</ul>
-<ol>
-<li>Install ipython: <code>mamba install ipython</code>
-</li>
-<li>Install pytorch:<ol>
-<li>Go to <a href="pytorch.org">pytorch.org</a>  → Get Started → Start Locally</li>
-<li>Pick options: Stable, Linux, Conda, Python, CPU</li>
-<li>Copy command, paste into terminal, change conda to mamba: <code>mamba install pytorch torchvision torchaudio cpuonly -c pytorch</code><ul>
+<li>If you want to experiment with a repository you can fork it via github. Then you can clone it and plan around with it locally.</li>
+<li>Basic workflow:<ul>
 <li>
-<code>-c pytorch</code> refers to the channel of pytorch </li>
-<li>check if installed correctly by starting <code>ipython</code> and subsequently typing <code>import torch</code>.</li>
+<code>git status</code> </li>
+<li><code>git add .</code></li>
+<li><code>git commit -m "Updated something"</code></li>
+<li><code>git push</code></li>
 </ul>
 </li>
-</ol>
-</li>
-<li>Install jupyerlab: <code>mamba install jupyterlab</code><ul>
-<li>Start Jupyter Lab: <code>jupyter lab</code>
-</li>
-<li>This will start jupyter server. It will try to open browser, but there is no browser in Ubuntu, so it will give error. But link that is returned in Terminal can be <kbd>Control</kbd>+clicked to open browser in Windows.</li>
-<li>If you do not want the error, add flag: <code>jupyter lab --no-browser</code>
-</li>
 </ul>
-</li>
-</ol>
 
 </div>
 </div>
@@ -261,68 +203,45 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Useful-tips/commands-in-Linux">
-<a class="anchor" href="#Useful-tips/commands-in-Linux" aria-hidden="true"><span class="octicon octicon-link"></span></a>Useful tips/commands in Linux<a class="anchor-link" href="#Useful-tips/commands-in-Linux"> </a>
+<h2 id="SSH">
+<a class="anchor" href="#SSH" aria-hidden="true"><span class="octicon octicon-link"></span></a>SSH<a class="anchor-link" href="#SSH"> </a>
 </h2>
 <ul>
-<li>Check where Python is installed: <code>which python</code>
-</li>
-<li>Print working directory you are in: <code>pwd</code>
-</li>
-<li>Navigate to home directory: <code>cd</code> or <code>cd ~</code>
-</li>
-<li>Make directory: <code>mkdir [directory name]</code>
-</li>
-<li>Delete directory (recursive and force delete): <code>rm -rf [directory name]</code>
-</li>
-<li>Move directory: <code>mv</code>
-</li>
-<li>List contents of directory <code>ls [-flags]</code>
-  Flags<ul>
-<li>Long form: <code>l</code>
-</li>
-<li>Human readable: <code>h</code>
-</li>
-<li>All (i.e. including hidden ones): <code>a</code>
-</li>
-<li>Sorted by date modified: <code>t</code>
-</li>
-<li>Possible to combine flags, e.g.: <code>ls -lhat</code> </li>
+<li>SSH is a way of logging into remote computers</li>
+<li>It consists of a key-pair: public key and a prviate key<ul>
+<li>
+<strong>Private key</strong> is proof of identity (should be kept secret)</li>
+<li>
+<strong>Public key</strong> says if you can prove identity associated with private key, you can log in </li>
 </ul>
 </li>
-<li>Look at a text file: <code>less [filename]</code>
-</li>
-<li>Restart shell: <code>sudo -u [user] -i</code>
-</li>
-<li>Change permission: <code>chmod u+x [filename]</code> (u=user, x=execute permission)</li>
-<li>Close terminal program: <kbd>Control</kbd>+<kbd>D</kbd>
-</li>
-<li>Shortcut to run command: press <kbd>UP</kbd> arrow to cycle through previous commands<ul>
-<li>All your terminal inputs are stored in the home folder in a file named <code>.bash_history</code>. This is convenient for creating bash scripts. Note that <code>.bash_history</code> is overwritten. If you have multiple bash sessions, only last one will survive.</li>
-</ul>
-</li>
-<li>Search through your previous terminal commands: <kbd>Control</kbd>+<kbd>R</kbd>
-</li>
-<li>Run last command starting with some letters: <code>![letters]</code><ul>
-<li>e.g. if last command you ran starting with <code>ju</code> was <code>jupyter lab --no-browser</code>, then <code>!ju</code> would run that command</li>
-</ul>
-</li>
-<li>Run last command: <code>!!</code><ul>
-<li>can use <code>echo</code> to print it</li>
-</ul>
-</li>
-<li>Jump to:<ul>
-<li>end of line: <kbd>Control</kbd>+<kbd>E</kbd>
-</li>
-<li>start of line: <kbd>Control</kbd>+<kbd>A</kbd>
-</li>
-<li>end/start of a word : <kbd>Control</kbd>+<kbd>LEFT</kbd>/<kbd>RIGHT</kbd>
+<li>To generate SSH keys, input in terminal: <code>ssh-keygen</code>
 </li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="tmux">
+<a class="anchor" href="#tmux" aria-hidden="true"><span class="octicon octicon-link"></span></a>tmux<a class="anchor-link" href="#tmux"> </a>
+</h2>
+<ul>
+<li>Allows for multiple terminals inside one terminal window</li>
+<li>Shortcuts always start with <kbd>CTRL</kbd>+<kbd>B</kbd>:<ul>
+<li>Divide current window vertically: <kbd>CTRL</kbd>+<kbd>B</kbd>+<kbd>%</kbd>
 </li>
-<li>Define alias (i.e. a shortcut for a command): <code>alias [alias]="[command]"</code><ul>
-<li>e.g. alias jl="jupyter lab --no-browser"</li>
-<li>if you want it to persist across sessions, need to add it to <code>.bashrc</code> or to <code>.bash_aliases</code>
+<li>Divide current window horizontally: <kbd>CTRL</kbd>+<kbd>B</kbd>+<kbd>"</kbd>
+</li>
+<li>Close window: <kbd>CTRL</kbd>+<kbd>B</kbd>+<kbd>D</kbd>
+</li>
+<li>Move around: <kbd>CTRL</kbd>+<kbd>B</kbd>+<kbd>↓</kbd><kbd>↑</kbd><kbd>←</kbd><kbd>→</kbd>
+</li>
+<li>Toggle zoom (focus on one window): <kbd>CTRL</kbd>+<kbd>B</kbd>+<kbd>Z</kbd>
+</li>
+<li>Attach (starts your session from where it left off after <kbd>CTRL</kbd>+<kbd>B</kbd>+<kbd>D</kbd>): <code>tmux a</code>
 </li>
 </ul>
 </li>
@@ -334,11 +253,28 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Useful-tip-for-ipython">
-<a class="anchor" href="#Useful-tip-for-ipython" aria-hidden="true"><span class="octicon octicon-link"></span></a>Useful tip for ipython<a class="anchor-link" href="#Useful-tip-for-ipython"> </a>
+<h2 id="Jupyter">
+<a class="anchor" href="#Jupyter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jupyter<a class="anchor-link" href="#Jupyter"> </a>
 </h2>
 <ul>
-<li>By pressing <kbd>TAB</kbd> after typing a library name, you get to see all the functions (including arguments), submodules, etc.</li>
+<li>Show documentation for a function: <kbd>SHIFT</kbd>+<kbd>TAB</kbd>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Install-fast.ai">
+<a class="anchor" href="#Install-fast.ai" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install fast.ai<a class="anchor-link" href="#Install-fast.ai"> </a>
+</h2>
+<ul>
+<li>Install: <code>mamba install -c fastchan fastai</code>
+</li>
+<li>Alternatively you can also install fastbook which includes fastai: <code>mamba install -c fastchan fastbook</code>
+</li>
 </ul>
 
 </div>
