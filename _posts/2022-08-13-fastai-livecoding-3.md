@@ -37,7 +37,14 @@ layout: notebook
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="At-the-end-of-this-lesson-you-will-have:">At the end of this lesson you will have:<a class="anchor-link" href="#At-the-end-of-this-lesson-you-will-have:"> </a></h1><ul>
-<li>...</li>
+<li>Understood Jeremy's opinion on virtual environments for Data Science projects</li>
+<li>Set up Gradient Notebook<ul>
+<li>SSH</li>
+<li>Persistent storage (pre-run.sh)</li>
+<li>Connection to git</li>
+</ul>
+</li>
+<li>Learned how to debug with pdd</li>
 </ul>
 
 </div>
