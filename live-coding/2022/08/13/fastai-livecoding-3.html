@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Live Coding Session 3 | fast.ai notes</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Live Coding Session 3" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="My personal notes for the fast.ai live coding session 3." />
+<meta property="og:description" content="My personal notes for the fast.ai live coding session 3." />
+<link rel="canonical" href="https://kemal-nl.github.io/personal-blog/live-coding/2022/08/13/fastai-livecoding-3.html" />
+<meta property="og:url" content="https://kemal-nl.github.io/personal-blog/live-coding/2022/08/13/fastai-livecoding-3.html" />
+<meta property="og:site_name" content="fast.ai notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Live Coding Session 3" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-13T00:00:00-05:00","datePublished":"2022-08-13T00:00:00-05:00","description":"My personal notes for the fast.ai live coding session 3.","headline":"Live Coding Session 3","mainEntityOfPage":{"@type":"WebPage","@id":"https://kemal-nl.github.io/personal-blog/live-coding/2022/08/13/fastai-livecoding-3.html"},"url":"https://kemal-nl.github.io/personal-blog/live-coding/2022/08/13/fastai-livecoding-3.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/personal-blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kemal-nl.github.io/personal-blog/feed.xml" title="fast.ai notes" /><link rel="shortcut icon" type="image/x-icon" href="/personal-blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/personal-blog/">fast.ai notes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/personal-blog/about/">About Me</a><a class="page-link" href="/personal-blog/search/">Search</a><a class="page-link" href="/personal-blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Live Coding Session 3</h1><p class="page-description">My personal notes for the fast.ai live coding session 3.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-13T00:00:00-05:00" itemprop="datePublished">
+        Aug 13, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/personal-blog/categories/#live-coding">live-coding</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Relevant-Material">Relevant Material </a></li>
+<li class="toc-entry toc-h1"><a href="#At-the-end-of-this-lesson-you-will-have:">At the end of this lesson you will have: </a></li>
+<li class="toc-entry toc-h1"><a href="#Notes">Notes </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Why-not-use-virtual-environment?">Why not use virtual environment? </a></li>
+<li class="toc-entry toc-h2"><a href="#PATH-and-virtual-environment">PATH and virtual environment </a></li>
+<li class="toc-entry toc-h2"><a href="#Paperspace">Paperspace </a></li>
+<li class="toc-entry toc-h2"><a href="#Debugging-in-Jupyter">Debugging in Jupyter </a></li>
+<li class="toc-entry toc-h2"><a href="#How-to-ensure-libraries-we-install-are-not-deleted-when-Paperspace-is-restarted">How to ensure libraries we install are not deleted when Paperspace is restarted </a></li>
+<li class="toc-entry toc-h2"><a href="#git-folder-on-Paperspace">git folder on Paperspace </a></li>
+<li class="toc-entry toc-h2"><a href="#SSH-key-on-paperspace">SSH key on paperspace </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-08-13-fastai-livecoding-3.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Relevant-Material">
+<a class="anchor" href="#Relevant-Material" aria-hidden="true"><span class="octicon octicon-link"></span></a>Relevant Material<a class="anchor-link" href="#Relevant-Material"> </a>
+</h1>
+<p><a href="https://forums.fast.ai/t/live-coding-3/96707">Live Coding Session 3 Forum</a>
+
+</p>
+<center class="youtube-iframe-wrapper">
+    <iframe width="730" height="315" src="https://www.youtube.com/embed/B6BQiIgiEks" frameborder="0" allowfullscreen=""></iframe>
+</center>
+
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="flash">
+    <svg class="octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg>
+    <strong>Note: </strong>These are my personal notes. They are not meant to be a comprehensive summary, but rather the things I wanted to note down for myself to refer to at a later point.
+</div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="At-the-end-of-this-lesson-you-will-have:">
+<a class="anchor" href="#At-the-end-of-this-lesson-you-will-have:" aria-hidden="true"><span class="octicon octicon-link"></span></a>At the end of this lesson you will have:<a class="anchor-link" href="#At-the-end-of-this-lesson-you-will-have:"> </a>
+</h1>
+<ul>
+<li>...</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Notes">
+<a class="anchor" href="#Notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes<a class="anchor-link" href="#Notes"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Why-not-use-virtual-environment?">
+<a class="anchor" href="#Why-not-use-virtual-environment?" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why not use virtual environment?<a class="anchor-link" href="#Why-not-use-virtual-environment?"> </a>
+</h2>
+<ul>
+<li>Virtual environments are separate folders with separate installations of Python and Python libraries. Good for keeping different projects separated with different sets of dependencies/versions. Jeremy prefers to have all his projects be compatible with each other and therefore has a baseline environment which he uses for all his projects.</li>
+<li>He manages this by:<ul>
+<li>Using a single base environment</li>
+<li>Keeping libraries up to date</li>
+<li>Having good tests that can tell if some new release has broken something</li>
+</ul>
+</li>
+<li>Exception: when Jeremy wants to check if something works with a specific version of Python.</li>
+<li>How to uninstall mamba: <code>rm -rf mamba forge</code>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="PATH-and-virtual-environment">
+<a class="anchor" href="#PATH-and-virtual-environment" aria-hidden="true"><span class="octicon octicon-link"></span></a>PATH and virtual environment<a class="anchor-link" href="#PATH-and-virtual-environment"> </a>
+</h2>
+<ul>
+<li>Terminals use something called <code>PATH</code>, which is a list of places from which to run programs.</li>
+<li>View <code>PATH</code> variable: <code>echo $PATH</code>
+</li>
+<li>mamba directory looks very similar to Linux root directory</li>
+<li>.bashrc sets <code>PATH</code> variable</li>
+<li>Create a new environment called <code>tmp</code>: <code>mamba create -n tmp 'python&lt;3.10' fastcore</code>
+</li>
+<li>Activate new environment: <code>mamba activate tmp</code>
+</li>
+<li>Deactivate: <code>mamba deactivate</code>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Paperspace">
+<a class="anchor" href="#Paperspace" aria-hidden="true"><span class="octicon octicon-link"></span></a>Paperspace<a class="anchor-link" href="#Paperspace"> </a>
+</h2>
+<ul>
+<li>Most of the time you won't (or shouldn't) be using a GPU. However when you do, it should feel as much as possible as if you are using your own computer and shouldn't cost you much (if any) money → Paperspace </li>
+<li>With Gradient Notebooks you can get a free GPU server which behaves a lot like what we have worked with so far</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Debugging-in-Jupyter">
+<a class="anchor" href="#Debugging-in-Jupyter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Debugging in Jupyter<a class="anchor-link" href="#Debugging-in-Jupyter"> </a>
+</h2>
+<ul>
+<li>Start debugger: <code>%% debug</code>
+</li>
+<li>Starts a REPL, some useful commands: h=help, s=step into, n=next, c=continue, l=list, q=quit</li>
+<li>Note: <code>breakpoint()</code> does not work in Jupyter due to some unresolved bug</li>
+<li>You can use pdb to step into library code as well</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="How-to-ensure-libraries-we-install-are-not-deleted-when-Paperspace-is-restarted">
+<a class="anchor" href="#How-to-ensure-libraries-we-install-are-not-deleted-when-Paperspace-is-restarted" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to ensure libraries we install are not deleted when Paperspace is restarted<a class="anchor-link" href="#How-to-ensure-libraries-we-install-are-not-deleted-when-Paperspace-is-restarted"> </a>
+</h2>
+<ul>
+<li>Since Paperspace does not offer a real server, whatever you install, will not be there the next time you start it up</li>
+<li>Paperspace does have persistent storage however. There is a folder called <code>storage</code> in the root directory. Whatever you store in there, will be there next time you start up the Paperspace 'server'.<ul>
+<li>View all drives and how much space is available: <code>df -h</code>
+</li>
+</ul>
+</li>
+<li>In contrast to conda/mamba, pip allows for us to install libraries in our home directory (<code>cd ~</code>) rather than in the root directory (<code>cd /</code>). We would want to do this if we do not have access to the root directory or we cannot save in the root directory. This is done by: <code>pip install --user [library]</code><ul>
+<li>For data science libraries, usually it is better to use conda/mamba. For example if you want to install PyTorch it is better to use conda/mamba, as it takes care of the dependencies for you. If you pip install it on the other hand, you will need to install CUDA SDK separately for instance. </li>
+<li>However, pip is fine for installing libraries without those types of dependencies. For most regular Python libraries, pip is fine. </li>
+</ul>
+</li>
+<li>When installing via pip with the <code>--user</code> flag, a new folder called <code>.local</code> is created in the home directory and the package will be installed in there.</li>
+<li>We want the .local directory to persist across sessions:<ol>
+<li>We move it to <code>root/storage</code>: <code>mv .local /storage</code> </li>
+<li>But Python needs it in the home directory. For this we create a 'symbolic link' aka 'symlink' (basically a shortcut): <code>ln -s /storage/.local</code>
+</li>
+<li>
+<code>.local</code> will now persist across sessions, however symlink will be removed. Paperspace runs a file every time on startup called <code>pre-run.sh</code>. We can use this file to create the symlink every time a notebook is started.</li>
+</ol>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="git-folder-on-Paperspace">
+<a class="anchor" href="#git-folder-on-Paperspace" aria-hidden="true"><span class="octicon octicon-link"></span></a>git folder on Paperspace<a class="anchor-link" href="#git-folder-on-Paperspace"> </a>
+</h2>
+<ul>
+<li>Jeremy has a git folder in <code>/notebooks</code> (sym linked, source directory is inside <code>/storage</code>). This is used to git clone repositories into it. (Needs to end up in <code>pre-run.sh</code>)</li>
+</ul>
+<h2 id="SSH-key-on-paperspace">
+<a class="anchor" href="#SSH-key-on-paperspace" aria-hidden="true"><span class="octicon octicon-link"></span></a>SSH key on paperspace<a class="anchor-link" href="#SSH-key-on-paperspace"> </a>
+</h2>
+<ul>
+<li>There are 2 options:<ol>
+<li>Use pre-existing SSH key (same as my local machine)<ul>
+<li>Jeremy's preference, because he doesn't want to do too much 'SSH key admin'</li>
+<li>How to:<ul>
+<li>Generate ssh key with <code>ssh-keygen</code>
+</li>
+<li>Move to <code>/storage</code>: <code>mv .ssh /storage</code>
+</li>
+<li>Sym link (needs to end up in <code>pre-run.sh</code>): <code>ln -s /storage/.ssh</code>
+</li>
+<li>Edit contents of <code>id_rsa</code> and <code>is_rsa.pub</code> (not sure if latter is needed).</li>
+<li>Check if permissions match that of default ssh key. If not: <ul>
+<li><code>chmod ag-rw id_rsa</code></li>
+<li><code>chmod ag-w id_rsa.pub</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Generate new one for Paperspace</li>
+</ol>
+</li>
+<li>Check by ssh into github: <code>ssh git@github.com</code> →<ul>
+<li>Returned text should mention your github username</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="kemal-nl/personal-blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/personal-blog/live-coding/2022/08/13/fastai-livecoding-3.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/personal-blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/personal-blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/personal-blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Personal blog with notes for fast.ai</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
